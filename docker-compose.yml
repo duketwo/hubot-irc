@@ -3,7 +3,13 @@ services:
   hubot:
     env_file: .env
     build: ./hubot
+    ports:
+     - '8888:8080'
+    volumes:
+     - ./hubot-scripts/:/home/hubot/scripts/
     restart: always
+    depends_on:
+     - redis
   redis:
     image: redis:latest
     command: redis-server --appendonly yes --auto-aof-rewrite-min-size 32mb --auto-aof-rewrite-percentage 50

@@ -18,7 +18,7 @@ WORKDIR /home/hubot
 RUN yo hubot --owner="o" --name="n" --description="desc" --defaults && \
  sed -i /heroku/d ./external-scripts.json && \
  sed -i /redis-brain/d ./external-scripts.json && \
- npm install hubot-scripts &&  \
+ npm install hubot-scripts async bluebird cheerio debug feedparser find-rss html-entities iconv irc-colors lodash request --save &&  \
  npm install hubot-irc --save
 
 CMD node -e "console.log(JSON.stringify('$EXTERNAL_SCRIPTS'.split(',')))" > external-scripts.json && \
