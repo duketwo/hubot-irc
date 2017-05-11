@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  hubot:
+    env_file: .env
+    build: ./hubot
+    restart: always
+  redis:
+    image: redis:latest
+    command: redis-server --appendonly yes --auto-aof-rewrite-min-size 32mb --auto-aof-rewrite-percentage 50
+    volumes:
+     - ./redis-data:/data
+    restart: always
